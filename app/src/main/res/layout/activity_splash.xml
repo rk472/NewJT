@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.jt.javatechnocrat.SplashActivity">
+
+    <Button
+        android:id="@+id/logoSplash"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/logo" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoSplash"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="A/54, Saheed Nagar, Bhubaneswar ,Odisha,751004"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:id="@+id/textView2" />
+
+    <Button
+        android:id="@+id/call_button"
+        android:layout_width="200dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/btn_shape"
+        android:drawableLeft="@drawable/vector_call_now"
+        android:paddingLeft="30dp"
+        android:text="Call Us"
+        android:onClick="callUs"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/enter_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/call_button"
+        android:layout_alignStart="@+id/call_button"
+        android:layout_below="@+id/call_button"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/btn_shape"
+        android:drawableRight="@drawable/vector_enter"
+        android:paddingRight="10dp"
+        android:text="Explore Now"
+        android:gravity="center"
+        android:onClick="exploreNow"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp" />
+</RelativeLayout>
