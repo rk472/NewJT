@@ -3,6 +3,8 @@ package com.jt.javatechnocrat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,22 +73,31 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment f = null;
         int id = item.getItemId();
 
-        /*if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
-
+        if (id == R.id.nav_home) {
+            f = new HomeFragment();
+        } else if (id == R.id.nav_courses) {
+            f = new CoursesFragment();
+        } else if (id == R.id.nav_team) {
+            f = new TeamFragment();
+        } else if (id == R.id.nav_batch) {
+            f = new BatchFragment();
+        } else if (id == R.id.nav_notice) {
+            f = new NoticeFragment();
+        } else if (id == R.id.nav_inquiry) {
+            f = new InquiryFragment();
+        }else if (id == R.id.nav_gallery) {
+            f = new GalleryFragment();
+        }else if (id == R.id.nav_about) {
+            f = new AboutFragment();
+        }else if (id == R.id.nav_contact) {
+            f = new ContactFragment();
+        }
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, f);
+        fragmentTransaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

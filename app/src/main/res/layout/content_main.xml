@@ -8,10 +8,11 @@
     tools:context="com.jt.javatechnocrat.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="Content Main"/>
+        android:id="@+id/main_container">
+
+
+    </FrameLayout>
 </RelativeLayout>
