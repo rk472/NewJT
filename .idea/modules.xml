@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NewJT.iml" filepath="$PROJECT_DIR$/NewJT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JT.iml" filepath="$PROJECT_DIR$/.idea/JT.iml" />
+      <module fileurl="file://C:\Users\daduc\Documents\JT\NewJT.iml" filepath="C:\Users\daduc\Documents\JT\NewJT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\daduc\Documents\JT\app\app.iml" filepath="C:\Users\daduc\Documents\JT\app\app.iml" />
     </modules>
   </component>
 </project>
