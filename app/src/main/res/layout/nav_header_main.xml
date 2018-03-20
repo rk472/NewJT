@@ -15,15 +15,15 @@
     <ImageView
         android:layout_gravity="center"
         android:id="@+id/imageView"
-        android:layout_width="95dp"
-        android:paddingTop="5dp"
-        android:layout_height="95dp"
+        android:layout_width="75dp"
+        android:paddingTop="2dp"
+        android:layout_height="75dp"
         app:srcCompat="@drawable/logo" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="2dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Java Technocrat"
