@@ -32,6 +32,8 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.daimajia.androidanimations:library:1.0.3@aar'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.firebaseui:firebase-ui-database:2.2.0'
 }
 
 

@@ -1,67 +1,26 @@
 package com.jt.javatechnocrat;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link NoticeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NoticeFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private AppCompatActivity main;
     private View root;
-
-    public NoticeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NoticeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NoticeFragment newInstance(String param1, String param2) {
-        NoticeFragment fragment = new NoticeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private RecyclerView noticeList;
+    private DatabaseReference noticeRef;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,7 +31,38 @@ public class NoticeFragment extends Fragment {
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_notice);
 
-        // Inflate the layout for this fragment
+        noticeRef= FirebaseDatabase.getInstance().getReference().child("notice");
+        noticeList=root.findViewById(R.id.notice_list);
+        FirebaseRecyclerAdapter<Notice,NoticeViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Notice, NoticeViewHolder>(
+                Notice.class,
+                R.layout.notice_row,
+                NoticeViewHolder.class,
+                noticeRef
+        ) {
+            @Override
+            protected void populateViewHolder(NoticeViewHolder viewHolder, Notice model, int position) {
+                viewHolder.setAllText(model.getTitle(),model.getDate(),model.getDescription());
+            }
+        };
+        noticeList.setAdapter(firebaseRecyclerAdapter);
+        noticeList.setLayoutManager(new LinearLayoutManager(main));
+        noticeList.hasFixedSize();
         return root;
+    }
+
+    public static class NoticeViewHolder extends RecyclerView.ViewHolder{
+        TextView titleText,dateText,descText;
+        public NoticeViewHolder(View itemView) {
+            super(itemView);
+            titleText=itemView.findViewById(R.id.notice_title);
+            dateText=itemView.findViewById(R.id.notice_date);
+            descText=itemView.findViewById(R.id.notice_description);
+
+        }
+        public void setAllText(String title,String date,String desc){
+            titleText.setText(title);
+            dateText.setText("Date : "+date);
+            descText.setText(desc);
+        }
     }
 }
