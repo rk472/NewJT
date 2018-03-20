@@ -15,28 +15,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/inquiry_date"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Date:26/12/1996"
-                    android:textColor="@color/colorAccent"
-                    android:layout_gravity="end"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/inquiry_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date : 26/ 12/ 1996   "
+                        android:textColor="@color/colorBlack"
+                        android:layout_gravity="end"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:text="* All RED fields are mandatory "
+                        android:textColor="@color/colorAccent"
+                        android:layout_gravity="start"/>
+                </LinearLayout>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/enquiry_place">
                     <RadioButton
                         android:id="@+id/enquiry_place_bbsr"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:textSize="18dp"
+                        android:textColor="@color/colorAccent"
                         android:text="Bhubaneswar"
                         android:layout_marginRight="10dp"/>
                     <RadioButton
                         android:id="@+id/enquiry_place_ctc"
+                        android:textSize="18dp"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="match_parent"
                         android:text="Cuttack" />
 
@@ -44,50 +61,63 @@
                 <EditText
                     android:id="@+id/enquiry_name"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:hint="Name"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
+                    android:background="@drawable/edittext_stroke"
                     android:layout_marginTop="10dp"/>
                 <EditText
                     android:id="@+id/enquiry_proffession"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:hint="Profession"/>
                 <EditText
                     android:id="@+id/enquiry_father"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:hint="Father's Name"/>
                 <EditText
                     android:id="@+id/enquiry_father_proffession"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edittext_stroke_normal"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:hint="Father's Profession"/>
                 <EditText
                     android:id="@+id/enquiry_mother"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edittext_stroke"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:hint="Mother's Name"/>
                 <EditText
                     android:id="@+id/enquiry_mother_proffession"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke_normal"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:hint="Mother's Profession"/>
                 <EditText
                     android:id="@+id/enquiry_college"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:textAlignment="center"
                     android:layout_gravity="center_horizontal"
                     android:hint="College Name"/>
@@ -95,14 +125,18 @@
                     android:id="@+id/enquiry_semester"
                     android:inputType="number"
                     android:layout_width="300dp"
+                    android:background="@drawable/edittext_stroke"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:hint="Semester"/>
                 <EditText
                     android:id="@+id/enquiry_trade"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:textAlignment="center"
                     android:layout_gravity="center_horizontal"
                     android:hint="Trade"/>
@@ -111,7 +145,9 @@
                     android:inputType="textEmailAddress"
                     android:layout_width="300dp"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:hint="Email Address"/>
                 <EditText
@@ -119,22 +155,26 @@
                     android:inputType="number"
                     android:layout_width="300dp"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:hint="Contact No"/>
                 <EditText
                     android:id="@+id/enquiry_alternative_no"
                     android:layout_width="300dp"
+                    android:background="@drawable/edittext_stroke_normal"
                     android:inputType="number"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:hint="Alternative No"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Enquiry For :"
-                    android:textSize="20dp"
+                    android:textSize="19dp"
                     android:layout_marginLeft="40dp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,20 +183,24 @@
                     <CheckBox
                         android:id="@+id/enquiry_c"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="C"/>
                     <CheckBox
                         android:id="@+id/enquiry_cpp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="C++"/>
                     <CheckBox
                         android:id="@+id/enquiry_core_java"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="core Java"/>
                     <CheckBox
                         android:id="@+id/enquiry_adv_java"
+                        android:textColor="@color/colorAccent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Adv Java"/>
@@ -169,20 +213,24 @@
                         android:id="@+id/enquiry_oracle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="Oracle"/>
                     <CheckBox
                         android:id="@+id/enquiry_iot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="IOT"/>
                     <CheckBox
                         android:id="@+id/enquiry_php"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="PHP"/>
                     <CheckBox
                         android:id="@+id/enquiry_python"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="Python"/>
                 </LinearLayout>
@@ -193,11 +241,13 @@
                     <CheckBox
                         android:id="@+id/enquiry_web_technology"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="Web Technology"/>
                     <CheckBox
                         android:id="@+id/enquiry_spring"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="Spring &amp; Hibernate"/>
                 </LinearLayout>
@@ -209,15 +259,18 @@
                         android:id="@+id/enquiry_data_structure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="Data Structure"/>
                     <CheckBox
                         android:id="@+id/enquiry_android"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="Android"/>
                     <CheckBox
                         android:id="@+id/enquiry_net"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text=".Net"/>
                 </LinearLayout>
@@ -229,10 +282,12 @@
                         android:id="@+id/enquiry_bigdata"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:text="Big Data\Hadoop"/>
                     <CheckBox
                         android:id="@+id/enquiry_english"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:text="Spoken English"/>
                 </LinearLayout>
@@ -247,22 +302,32 @@
                     android:id="@+id/enquiry_reference_friend"
                     android:layout_width="300dp"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_stroke_normal"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:hint="Friend's Name(if any)"/>
                 <EditText
                     android:id="@+id/enquiry_reference_marketing"
                     android:layout_width="300dp"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edittext_stroke_normal"
                     android:layout_gravity="center_horizontal"
                     android:hint="Marketing Name(if any)"/>
                 <Button
                     android:id="@+id/enquiry_submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
                     android:text="enquiry"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_stroke"
                     android:layout_gravity="center_horizontal"/>
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

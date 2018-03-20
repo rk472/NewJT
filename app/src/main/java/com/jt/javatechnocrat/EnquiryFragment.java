@@ -160,7 +160,6 @@ public class EnquiryFragment extends Fragment {
                     if(TextUtils.isEmpty(fatherProf))fatherProf="none";
                     if(TextUtils.isEmpty(motherProf))motherProf="none";
                     if(TextUtils.isEmpty(altNo))altNo="none";
-                    if(TextUtils.isEmpty(fatherProf))fatherProf="none";
                     if(TextUtils.isEmpty(friend))friend="none";
                     if(TextUtils.isEmpty(marketing))marketing="none";
                     Map m=new HashMap();
