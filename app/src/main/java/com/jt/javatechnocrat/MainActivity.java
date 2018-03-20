@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_notice) {
             f = new NoticeFragment();
         } else if (id == R.id.nav_inquiry) {
-            f = new InquiryFragment();
+            f = new EnquiryFragment();
         }else if (id == R.id.nav_gallery) {
             f = new GalleryFragment();
         }else if (id == R.id.nav_about) {
