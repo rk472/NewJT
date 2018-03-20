@@ -61,7 +61,7 @@ public class NoticeFragment extends Fragment {
         }
         public void setAllText(String title,String date,String desc){
             titleText.setText(title);
-            dateText.setText("Date : "+date);
+            dateText.setText(" "+date);
             descText.setText(desc);
         }
     }

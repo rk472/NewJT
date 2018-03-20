@@ -1,5 +1,6 @@
 package com.jt.javatechnocrat;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -19,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 
 public class TeamFragment extends Fragment {
@@ -47,8 +51,42 @@ public class TeamFragment extends Fragment {
                 teamRef
         ) {
             @Override
-            protected void populateViewHolder(TeamViewHolder viewHolder, Team model, int position) {
+            protected void populateViewHolder(TeamViewHolder viewHolder, final Team model, int position) {
                 viewHolder.setAllData(model.getName(),model.getSubject(),model.getImage_url(),getContext());
+                viewHolder.know.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final Dialog fullscreenDialog = new Dialog(getContext(), R.style.DialogFullscreen);
+                        fullscreenDialog.setContentView(R.layout.activity_team);
+                        final ImageView logo = fullscreenDialog.findViewById(R.id.team_logo);
+                        TextView name = fullscreenDialog.findViewById(R.id.team_name);
+                        TextView sub = fullscreenDialog.findViewById(R.id.team_sub);
+                        TextView desc = fullscreenDialog.findViewById(R.id.team_des);
+                        name.setText(model.getName());
+                        sub.setText(model.getSubject());
+                        desc.setText(model.getDesc());
+                        Picasso.with(main).load(model.getImage_url()).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo_def)
+                                .into(logo, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+
+                                    }
+                                    @Override
+                                    public void onError() {
+                                        Picasso.with(main).load(model.getImage_url()).placeholder(R.drawable.logo_def).into(logo);
+                                    }
+                                });
+                        ImageView img_dialog_fullscreen_close = fullscreenDialog.findViewById(R.id.img_dialog_fullscreen_close);
+                        img_dialog_fullscreen_close.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                fullscreenDialog.dismiss();
+                            }
+                        });
+                        fullscreenDialog.show();
+
+                    }
+                });
             }
         };
         teamList.setLayoutManager(new LinearLayoutManager(main));
@@ -61,13 +99,14 @@ public class TeamFragment extends Fragment {
     public static class TeamViewHolder extends RecyclerView.ViewHolder{
         View mView;
         ImageView img;
-        TextView nameText,subjectText;
+        TextView nameText,subjectText,know;
         public TeamViewHolder(View itemView) {
             super(itemView);
             mView=itemView;
             img=mView.findViewById(R.id.faculty_image);
             nameText=mView.findViewById(R.id.faculty_name);
             subjectText=mView.findViewById(R.id.faculty_subject);
+            know = mView.findViewById(R.id.faculty_know_more);
         }
         public void setAllData(String name, String subject, final String url, final Context ctx){
             nameText.setText(name);
@@ -76,9 +115,7 @@ public class TeamFragment extends Fragment {
                     .into(img, new Callback() {
                         @Override
                         public void onSuccess() {
-
                         }
-
                         @Override
                         public void onError() {
                             Picasso.with(ctx).load(url).placeholder(R.drawable.logo_def).into(img);
