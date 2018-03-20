@@ -85,7 +85,7 @@ public class CoursesFragment extends Fragment {
             nameText.setText(name);
             durationText.setText("Duration : "+duration);
             priceText.setText("rs "+fee);
-            Picasso.with(ctx).load(url).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo_def)
+            Picasso.with(ctx).load(url).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo)
                     .into(img, new Callback() {
                         @Override
                         public void onSuccess() {
@@ -94,7 +94,7 @@ public class CoursesFragment extends Fragment {
 
                         @Override
                         public void onError() {
-                            Picasso.with(ctx).load(url).placeholder(R.drawable.logo_def).into(img);
+                            Picasso.with(ctx).load(url).placeholder(R.drawable.logo).into(img);
                         }
                     });
         }
