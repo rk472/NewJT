@@ -1,67 +1,33 @@
 package com.jt.javatechnocrat;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link TeamFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TeamFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private AppCompatActivity main;
     private View root;
-
-
-    public TeamFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TeamFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TeamFragment newInstance(String param1, String param2) {
-        TeamFragment fragment = new TeamFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private RecyclerView teamList;
+    private DatabaseReference teamRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,8 +38,52 @@ public class TeamFragment extends Fragment {
         //Nav View
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_team);
+        teamList=root.findViewById(R.id.team_list);
+        teamRef= FirebaseDatabase.getInstance().getReference().child("faculty");
+        FirebaseRecyclerAdapter<Team,TeamViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Team, TeamViewHolder>(
+                Team.class,
+                R.layout.faculty_row,
+                TeamViewHolder.class,
+                teamRef
+        ) {
+            @Override
+            protected void populateViewHolder(TeamViewHolder viewHolder, Team model, int position) {
+                viewHolder.setAllData(model.getName(),model.getSubject(),model.getImage_url(),getContext());
+            }
+        };
+        teamList.setLayoutManager(new LinearLayoutManager(main));
+        teamList.setHasFixedSize(true);
+        teamList.setAdapter(firebaseRecyclerAdapter);
 
         // Inflate the layout for this fragment
         return root;
+    }
+    public static class TeamViewHolder extends RecyclerView.ViewHolder{
+        View mView;
+        ImageView img;
+        TextView nameText,subjectText;
+        public TeamViewHolder(View itemView) {
+            super(itemView);
+            mView=itemView;
+            img=mView.findViewById(R.id.faculty_image);
+            nameText=mView.findViewById(R.id.faculty_name);
+            subjectText=mView.findViewById(R.id.faculty_subject);
+        }
+        public void setAllData(String name, String subject, final String url, final Context ctx){
+            nameText.setText(name);
+            subjectText.setText(subject);
+            Picasso.with(ctx).load(url).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo_def)
+                    .into(img, new Callback() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError() {
+                            Picasso.with(ctx).load(url).placeholder(R.drawable.logo_def).into(img);
+                        }
+                    });
+        }
     }
 }
