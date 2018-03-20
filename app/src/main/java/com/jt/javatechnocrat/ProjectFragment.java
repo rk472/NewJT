@@ -15,10 +15,10 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * to handle interaction events.
- * Use the {@link AboutFragment#newInstance} factory method to
+ * Use the {@link ProjectFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AboutFragment extends Fragment {
+public class ProjectFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,11 +27,10 @@ public class AboutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private AppCompatActivity main;
     private View root;
 
-    public AboutFragment() {
+    public ProjectFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class AboutFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutFragment.
+     * @return A new instance of fragment ProjectFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AboutFragment newInstance(String param1, String param2) {
-        AboutFragment fragment = new AboutFragment();
+    public static ProjectFragment newInstance(String param1, String param2) {
+        ProjectFragment fragment = new ProjectFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,12 +64,13 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         main=(AppCompatActivity)getActivity();
-        main.getSupportActionBar().setTitle("About Us");
-        root=inflater.inflate(R.layout.fragment_about, container, false);
+        main.getSupportActionBar().setTitle("Projects");
+        root=inflater.inflate(R.layout.fragment_project, container, false);
         //Nav View
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_about);
+        navigationView.setCheckedItem(R.id.nav_project);
 
         // Inflate the layout for this fragment
         return root;
