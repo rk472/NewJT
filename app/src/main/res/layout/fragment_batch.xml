@@ -4,11 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.jt.javatechnocrat.BatchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="20dp"
-        android:text="Batch" />
-
+        android:id="@+id/batch_list"/>
 </FrameLayout>
