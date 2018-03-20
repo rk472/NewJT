@@ -35,6 +35,7 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:1.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
     compile 'com.firebaseui:firebase-ui-database:2.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 
