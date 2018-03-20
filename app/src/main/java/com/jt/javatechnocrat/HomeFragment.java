@@ -3,13 +3,16 @@ package com.jt.javatechnocrat;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +45,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     private AppCompatActivity main;
     private View root;
     private SliderLayout mDemoSlider;
-
+    private FragmentTransaction fragmentTransaction;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -81,15 +84,18 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         main=(AppCompatActivity)getActivity();
         main.getSupportActionBar().setTitle("JT Home");
         root=inflater.inflate(R.layout.fragment_home, container, false);
-
+        //Nav View
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_home);
+        //Image Slider
         mDemoSlider = root.findViewById(R.id.slider);
-
+        //Image set
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Hannibal",R.drawable.hannibal);
-        file_maps.put("Big Bang Theory",R.drawable.bigbang);
+        file_maps.put("BBT",R.drawable.bigbang);
         file_maps.put("House of Cards",R.drawable.house);
-        file_maps.put("Game of Thrones", R.drawable.game_of_thrones);
-
+        file_maps.put("GOT", R.drawable.game_of_thrones);
+        //Image Slider
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(main);
             // initialize a SliderLayout
@@ -98,22 +104,92 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                     .image(file_maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
-
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
                     .putString("extra",name);
-
             mDemoSlider.addSlider(textSliderView);
         }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Foreground2Background);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new ChildAnimationExample());
-        //mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
+        //Icons Initialization and OnClick set
+        root.findViewById(R.id.home_courses).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new CoursesFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_team).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new TeamFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_batch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new BatchFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_project).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new ProjectFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_notice).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new NoticeFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_enquiry).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new InquiryFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_gallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new GalleryFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new AboutFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        root.findViewById(R.id.home_contact).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new ContactFragment());
+                fragmentTransaction.commit();
+            }
+        });
 
-        // Inflate the layout for this fragment
+        //Inflate the layout for this fragment
         return root;
     }
     @Override

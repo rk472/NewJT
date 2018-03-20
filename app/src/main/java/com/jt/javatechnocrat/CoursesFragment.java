@@ -3,6 +3,7 @@ package com.jt.javatechnocrat;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -67,6 +68,9 @@ public class CoursesFragment extends Fragment {
         main=(AppCompatActivity)getActivity();
         main.getSupportActionBar().setTitle("Our Courses");
         root=inflater.inflate(R.layout.fragment_courses, container, false);
+        //Nav View
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_courses);
 
         // Inflate the layout for this fragment
         return root;
