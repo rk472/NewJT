@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity
             f = new BatchFragment();
         } else if (id == R.id.nav_notice) {
             f = new NoticeFragment();
-        } else if (id == R.id.nav_enquiry) {
-            f = new InquiryFragment();
+        } else if (id == R.id.nav_inquiry) {
+            f = new EnquiryFragment();
         }else if (id == R.id.nav_gallery) {
             f = new GalleryFragment();
         }else if (id == R.id.nav_about) {
