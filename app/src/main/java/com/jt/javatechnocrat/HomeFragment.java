@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new InquiryFragment());
+                fragmentTransaction.replace(R.id.main_container,new EnquiryFragment());
                 fragmentTransaction.commit();
             }
         });
