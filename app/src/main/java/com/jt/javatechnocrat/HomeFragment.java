@@ -5,9 +5,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
+
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +29,7 @@ import android.view.ViewGroup;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,6 +41,7 @@ public class HomeFragment extends Fragment {
 
     private AppCompatActivity main;
     private View root;
+    private SliderLayout mDemoSlider;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -67,7 +81,61 @@ public class HomeFragment extends Fragment {
         main=(AppCompatActivity)getActivity();
         main.getSupportActionBar().setTitle("JT Home");
         root=inflater.inflate(R.layout.fragment_home, container, false);
+
+        mDemoSlider = root.findViewById(R.id.slider);
+
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Hannibal",R.drawable.hannibal);
+        file_maps.put("Big Bang Theory",R.drawable.bigbang);
+        file_maps.put("House of Cards",R.drawable.house);
+        file_maps.put("Game of Thrones", R.drawable.game_of_thrones);
+
+        for(String name : file_maps.keySet()){
+            TextSliderView textSliderView = new TextSliderView(main);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(name)
+                    .image(file_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra",name);
+
+            mDemoSlider.addSlider(textSliderView);
+        }
+        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Foreground2Background);
+        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mDemoSlider.setCustomAnimation(new ChildAnimationExample());
+        //mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+        mDemoSlider.setDuration(4000);
+        mDemoSlider.addOnPageChangeListener(this);
+
         // Inflate the layout for this fragment
         return root;
     }
+    @Override
+    public void onStop() {
+        // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
+        mDemoSlider.stopAutoCycle();
+        super.onStop();
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+        Toast.makeText(main,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+    @Override
+    public void onPageSelected(int position) {
+        Log.d("Slider Demo", "Page Changed: " + position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {}
 }

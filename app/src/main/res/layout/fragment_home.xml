@@ -3,12 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jt.javatechnocrat.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:textSize="20dp"/>
+        android:layout_height="match_parent">
 
+        <RelativeLayout xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.daimajia.slider.demo.MainActivity">
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                custom:auto_cycle="true"
+                custom:indicator_visibility="visible"
+                custom:pager_animation="Accordion"
+                custom:pager_animation_span="1100" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
 </FrameLayout>
