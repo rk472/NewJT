@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new CoursesFragment());
+                fragmentTransaction.replace(R.id.main_container,new CoursesFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new TeamFragment());
+                fragmentTransaction.replace(R.id.main_container,new TeamFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new BatchFragment());
+                fragmentTransaction.replace(R.id.main_container,new BatchFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -144,7 +144,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new ProjectFragment());
+                fragmentTransaction.replace(R.id.main_container,new ProjectFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -152,7 +152,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new NoticeFragment());
+                fragmentTransaction.replace(R.id.main_container,new NoticeFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new EnquiryFragment());
+                fragmentTransaction.replace(R.id.main_container,new EnquiryFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -168,7 +168,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new GalleryFragment());
+                fragmentTransaction.replace(R.id.main_container,new GalleryFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -176,7 +176,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new AboutFragment());
+                fragmentTransaction.replace(R.id.main_container,new AboutFragment(),"other");
                 fragmentTransaction.commit();
             }
         });
@@ -184,7 +184,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
                 fragmentTransaction=main.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new ContactFragment());
+                fragmentTransaction.replace(R.id.main_container,new ContactFragment(),"other");
                 fragmentTransaction.commit();
             }
         });

@@ -1,5 +1,6 @@
 package com.jt.javatechnocrat;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -7,15 +8,18 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentTransaction fragmentTransaction;
+    String fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.main_container,new HomeFragment());
+        fragmentTransaction.add(R.id.main_container,new HomeFragment(),"home");
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -43,7 +47,23 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(getSupportFragmentManager().findFragmentById(R.id.main_container).getTag().equals("home"))
+                    new AlertDialog.Builder(this)
+                            .setTitle("Exit")
+                            .setMessage("Do You really want to Exit ?")
+                            .setPositiveButton("Yes, Sure", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    MainActivity.super.onBackPressed();
+                                }
+                            }).setNegativeButton("No, Don't",null).show();
+
+            else{
+                Fragment f=new HomeFragment();
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container, f,"home");
+                fragmentTransaction.commit();
+            }
         }
     }
 
@@ -62,7 +82,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_home) {
+            Fragment f=new HomeFragment();
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.main_container, f,"home");
+            fragmentTransaction.commit();
             return true;
         }
 
@@ -75,28 +99,40 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         Fragment f = null;
         int id = item.getItemId();
-
+        String tag = null;
         if (id == R.id.nav_home) {
             f = new HomeFragment();
+            tag="home";
         } else if (id == R.id.nav_courses) {
             f = new CoursesFragment();
+            tag="other";
         } else if (id == R.id.nav_team) {
             f = new TeamFragment();
+            tag="other";
         } else if (id == R.id.nav_batch) {
             f = new BatchFragment();
+            tag="other";
         } else if (id == R.id.nav_notice) {
             f = new NoticeFragment();
+            tag="other";
         } else if (id == R.id.nav_enquiry) {
+            tag="other";
             f = new EnquiryFragment();
         }else if (id == R.id.nav_gallery) {
             f = new GalleryFragment();
+            tag="other";
         }else if (id == R.id.nav_about) {
             f = new AboutFragment();
+            tag="other";
+        }else if (id == R.id.nav_project) {
+            f = new ProjectFragment();
+            tag="other";
         }else if (id == R.id.nav_contact) {
             f = new ContactFragment();
+            tag="other";
         }
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_container, f);
+        fragmentTransaction.replace(R.id.main_container, f,tag);
         fragmentTransaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
