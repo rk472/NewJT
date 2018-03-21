@@ -189,7 +189,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             }
         });
 
-        //Inflate the layout for this fragment
+        //Inflate the gallery_layout for this fragment
         return root;
     }
     @Override

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:background="@drawable/image_back"
+    android:layout_height="300dp">
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:id="@+id/modal_image"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:background="@drawable/image_back"
+        />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/modal_close"
+        android:src="@drawable/ic_close_white_24dp"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

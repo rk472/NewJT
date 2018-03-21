@@ -105,7 +105,7 @@ public class CoursesFragment extends Fragment {
         courseList.setAdapter(firebaseRecyclerAdapter);
         courseList.setLayoutManager(new LinearLayoutManager(main));
         courseList.setHasFixedSize(true);
-        // Inflate the layout for this fragment
+        // Inflate the gallery_layout for this fragment
         return root;
     }
     public static class CourseViewHolder extends RecyclerView.ViewHolder{

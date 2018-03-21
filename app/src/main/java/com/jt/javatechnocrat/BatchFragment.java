@@ -58,7 +58,7 @@ public class BatchFragment extends Fragment {
         };
         batchView.setAdapter(firebaseRecyclerAdapter);
         batchView.setLayoutManager(new LinearLayoutManager(main));
-        // Inflate the layout for this fragment
+        // Inflate the gallery_layout for this fragment
         return root;
     }
     public static class BatchViewHolder extends RecyclerView.ViewHolder {

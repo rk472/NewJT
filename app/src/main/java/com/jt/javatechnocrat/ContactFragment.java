@@ -72,7 +72,7 @@ public class ContactFragment extends Fragment {
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_contact);
 
-        // Inflate the layout for this fragment
+        // Inflate the gallery_layout for this fragment
         return root;
     }
 }

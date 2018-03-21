@@ -72,7 +72,7 @@ public class ProjectFragment extends Fragment {
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_project);
 
-        // Inflate the layout for this fragment
+        // Inflate the gallery_layout for this fragment
         return root;
     }
 }

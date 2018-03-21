@@ -6,7 +6,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_institute">Java Technocrat is an institute that offer courses on Core Java, Advance Java, Oracle ,Android , C and C++ .It is a renowned IT institution in Bhubaneswar. Our institute has been established with the aim to provide best service to the students and to enhance their technical knowledge on programming languages in order to make them skilled enough to develop industry-based software.</string>
+    <string name="text_placement">Java Technocrat is dealing with many MNCS (like TCS, Wipro, Capgemini, Infosys, MindFire,etc.) for the placement of students so that students will be placed in a better and growing companies and will have a bright and successful future. We are not only train the students from computer science and IT department,but also people of Chemistry hons., Mechanical engineering, civil engineering are coming to us.</string>
+    <string name="text_location">It is situated at A/54, Saheed Nagar, Bhubaneswar. We also have trained project development team , who are trained from experts and they are helping students in projects which will be completely as per industry-oriented.</string>
+    <string name="text_newtech">Our faculties are researching everyday to give the latest concepts of the market to their students.We never take high amount of mone y from the students.We always try to give maximum service in a minimum budget.Our faculties are very much dedicated ,so that students will get the interest to learn.</string>
+    <string name="text_focus">We not only focus on the students but also on the working professional.Every month some working professionals are coming to us and get their training over here.Our focus is to provide every student of Java Technocrat the best ever training and help them improve their skills.</string>
 </resources>

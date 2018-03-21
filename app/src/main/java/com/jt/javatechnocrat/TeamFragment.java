@@ -93,7 +93,7 @@ public class TeamFragment extends Fragment {
         teamList.setHasFixedSize(true);
         teamList.setAdapter(firebaseRecyclerAdapter);
 
-        // Inflate the layout for this fragment
+        // Inflate the gallery_layout for this fragment
         return root;
     }
     public static class TeamViewHolder extends RecyclerView.ViewHolder{
