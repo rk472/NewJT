@@ -3,5 +3,226 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jt.javatechnocrat.ContactFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:text="JAVA TECHNOCRAT"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Hi!"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="We are ready to help you."
+            android:textColor="#000"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Our Service hour is"
+            android:textColor="#000"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Monday-Saturday( 8 am to 9 pm )"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Sunday( 8 am to 2 pm)"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/contact_call"
+                    android:src="@drawable/vector_call_now"
+                    android:background="@drawable/contact_btn_shape"
+                    android:elevation="10dp"
+                    android:onClick="call"
+                    android:clickable="true"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Call us"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/contact_mail"
+                    android:src="@drawable/ic_email_white_24dp"
+                    android:background="@drawable/contact_btn_shape"
+                    android:elevation="10dp"
+                    android:onClick="mail"
+                    android:clickable="true"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Send Email"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/contact_direction"
+                    android:textAlignment="center"
+                    android:background="@drawable/contact_btn_shape"
+                    android:src="@drawable/ic_location_on_white_24dp"
+                    android:elevation="10dp"
+                    android:onClick="find"
+                    android:clickable="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Find us"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Follow us on : "
+            android:layout_marginTop="5dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp">
+
+            <ImageButton
+                android:id="@+id/social_fb"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fb"
+                android:adjustViewBounds="true"
+                android:onClick="fb"
+                android:clickable="true"/>
+            <ImageButton
+                android:id="@+id/social_wa"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/whatsapp"
+                android:adjustViewBounds="true"
+                android:onClick="whatsapp"
+                />
+            <ImageButton
+                android:id="@+id/social_twitter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/twitter"
+                android:adjustViewBounds="true"
+                android:onClick="twitter"
+                android:clickable="true"
+                />
+            <ImageButton
+                android:id="@+id/social_gplus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gplus"
+                android:adjustViewBounds="true"
+                android:onClick="gplus"
+                android:clickable="true"
+                />
+            <ImageButton
+                android:id="@+id/social_linkedin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/linkedin"
+                android:adjustViewBounds="true"
+                android:onClick="linkedin"
+                android:clickable="true"
+                />
+            <ImageButton
+                android:id="@+id/social_youtube"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/social_btn_shape"
+                android:elevation="10dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/youtube"
+                android:adjustViewBounds="true"
+                android:onClick="youtube"
+                android:clickable="true"
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
 
 </FrameLayout>

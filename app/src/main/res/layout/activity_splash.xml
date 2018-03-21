@@ -39,7 +39,7 @@
         android:background="@drawable/btn_shape"
         android:drawableLeft="@drawable/vector_call_now"
         android:paddingLeft="30dp"
-        android:text="Call Us"
+        android:text="Call us"
         android:onClick="callUs"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"

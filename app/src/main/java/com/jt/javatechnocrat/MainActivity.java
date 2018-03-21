@@ -1,7 +1,11 @@
 package com.jt.javatechnocrat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -13,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -138,4 +143,52 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void call(View v){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
+            return;
+        }
+        Intent i = new Intent(Intent.ACTION_CALL);
+        i.setData(Uri.parse("tel:+919437010139"));
+        startActivity(i);
+    }
+    public void mail(View v){
+        Intent i=new Intent(Intent.ACTION_SEND);
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"example@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        i.putExtra(Intent.EXTRA_TEXT, "message");
+        i.setType("message/rfc822");
+        startActivity(Intent.createChooser(i, "Send Email"));
+    }
+    public void find(View v){
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("http://maps.google.com/maps?daddr=20.2955635,85.8433187"));
+        startActivity(intent);
+    }
+    public void fb(View view) {
+        Intent i;
+        try {
+            MainActivity.this.getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            i= new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/<id_here>"));
+        } catch (Exception e) {
+            i= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/<user_name_here>"));
+        }
+        startActivity(i);
+    }
+    public void twitter(View view) {
+
+    }
+    public void gplus(View view) {
+
+    }
+    public void linkedin(View view) {
+
+    }
+    public void youtube(View view) {
+
+    }
+    public void whatsapp(View view) {
+
+    }
+
 }
