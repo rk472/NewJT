@@ -1,13 +1,17 @@
 package com.jt.javatechnocrat;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.renderscript.Script;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,6 +80,10 @@ public class CoursesFragment extends Fragment {
                 viewHolder.syllabus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if (ActivityCompat.checkSelfPermission(main, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(main, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                            return;
+                        }
                         String url=model.getSyllabus();
                         if(!url.equals("none")) {
                             final ProgressDialog dialog = new ProgressDialog(main);
@@ -134,7 +142,7 @@ public class CoursesFragment extends Fragment {
         public void setAllData(final Context ctx, final String url, String name, String duration, String fee){
             nameText.setText(name);
             durationText.setText("Duration : "+duration);
-            priceText.setText("rs "+fee);
+            priceText.setText("Price : rs "+fee);
             Picasso.with(ctx).load(url).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo)
                     .into(img, new Callback() {
                         @Override
