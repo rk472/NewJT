@@ -27,6 +27,7 @@ public class JTOffline extends Application {
         built.setIndicatorsEnabled(true);
         built.setLoggingEnabled(true);
         Picasso.setSingletonInstance(built);
+        built.setIndicatorsEnabled(false);
 
 
     }

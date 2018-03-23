@@ -77,6 +77,7 @@ public class GalleryFragment extends Fragment {
             @Override
             protected void populateViewHolder(GalleryViewHolder viewHolder, final Gallery model, int position) {
                 viewHolder.setImage(getContext(), model.getUrl());
+                //Toast.makeText(main, model.getName(), Toast.LENGTH_SHORT).show();
                 pd.dismiss();
                 viewHolder.img.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,6 +94,7 @@ public class GalleryFragment extends Fragment {
                             }
                         });
                         mCaption.setText(model.getName());
+                        //Toast.makeText(main, model.getName(), Toast.LENGTH_SHORT).show();
                         Picasso.with(main).load(model.getUrl()).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.galery_not)
                                 .into(mImage, new Callback() {
                                     @Override

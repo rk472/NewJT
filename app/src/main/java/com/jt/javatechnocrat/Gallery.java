@@ -5,8 +5,8 @@ package com.jt.javatechnocrat;
  */
 
 public class Gallery {
-    String url;
-    String name;
+    private String url;
+    private String name;
     public Gallery() {
     }
 
