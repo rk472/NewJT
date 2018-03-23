@@ -155,15 +155,15 @@ public class MainActivity extends AppCompatActivity
     }
     public void mail(View v){
         Intent i=new Intent(Intent.ACTION_SEND);
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"example@gmail.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "subject");
-        i.putExtra(Intent.EXTRA_TEXT, "message");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"javatech04@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Inquiry");
+        i.putExtra(Intent.EXTRA_TEXT, "Hello I want to know about JT... !");
         i.setType("message/rfc822");
         startActivity(Intent.createChooser(i, "Send Email"));
     }
     public void find(View v){
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?daddr=20.2955635,85.8433187"));
+                Uri.parse("http://maps.google.com/maps?daddr=20.295576,85.8453781"));
         startActivity(intent);
     }
     public void fb(View view) {

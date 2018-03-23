@@ -11,9 +11,20 @@
         <Spinner
             android:id="@+id/project_subject_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="30dp"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available Projects"
+            android:textSize="22dp"
+            android:background="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
         <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/project_list"/>
