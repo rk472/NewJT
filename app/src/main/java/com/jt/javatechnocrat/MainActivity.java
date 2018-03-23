@@ -1,5 +1,6 @@
 package com.jt.javatechnocrat;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -167,12 +168,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void fb(View view) {
         Intent i;
-        try {
-            MainActivity.this.getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", 0);
-            i= new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/<id_here>"));
-        } catch (Exception e) {
-            i= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/<user_name_here>"));
-        }
+        i= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/javatechnocrat"));
         startActivity(i);
     }
     public void twitter(View view) {
@@ -184,11 +180,22 @@ public class MainActivity extends AppCompatActivity
     public void linkedin(View view) {
 
     }
-    public void youtube(View view) {
-
+    public void play(View view) {
+        Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+        }
     }
     public void whatsapp(View view) {
-
+        Intent i=new Intent(Intent.ACTION_VIEW,Uri.parse("https://api.whatsapp.com/send?phone=+918908858864&text=Hii%20....I%20want%20to%20know%20about%20JT"));
+        startActivity(i);
     }
 
 }

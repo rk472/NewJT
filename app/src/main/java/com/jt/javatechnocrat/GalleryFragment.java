@@ -67,7 +67,7 @@ public class GalleryFragment extends Fragment {
         navigationView.setCheckedItem(R.id.nav_gallery);
         galleryRef= FirebaseDatabase.getInstance().getReference().child("gallery");
         galleryList=root.findViewById(R.id.gallery_list);
-
+        galleryRef.keepSynced(true);
         FirebaseRecyclerAdapter<Gallery, GalleryViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Gallery, GalleryViewHolder>(
                 Gallery.class,
                 R.layout.gallery_row,
@@ -85,12 +85,14 @@ public class GalleryFragment extends Fragment {
                         View mView = main.getLayoutInflater().inflate(R.layout.modal_layout,null);
                         final ImageView mImage = mView.findViewById(R.id.modal_image);
                         final ImageView mclose = mView.findViewById(R.id.modal_close);
+                        final TextView mCaption=mView.findViewById(R.id.modal_caption);
                         mclose.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                dialog.dismiss();
                             }
                         });
+                        mCaption.setText(model.getName());
                         Picasso.with(main).load(model.getUrl()).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.galery_not)
                                 .into(mImage, new Callback() {
                                     @Override

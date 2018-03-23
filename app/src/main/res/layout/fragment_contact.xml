@@ -211,10 +211,10 @@
                 android:background="@drawable/social_btn_shape"
                 android:elevation="10dp"
                 android:layout_marginRight="7dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/youtube"
+                android:scaleType="centerInside"
+                android:src="@drawable/play"
                 android:adjustViewBounds="true"
-                android:onClick="youtube"
+                android:onClick="play"
                 android:clickable="true"
                 />
         </LinearLayout>

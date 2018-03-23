@@ -6,13 +6,22 @@ package com.jt.javatechnocrat;
 
 public class Gallery {
     String url;
-
+    String name;
     public Gallery() {
     }
 
-    public Gallery(String url) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Gallery(String url, String name) {
 
         this.url = url;
+        this.name = name;
     }
 
     public String getUrl() {

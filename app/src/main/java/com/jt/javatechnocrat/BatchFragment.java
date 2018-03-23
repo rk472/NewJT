@@ -1,5 +1,6 @@
 package com.jt.javatechnocrat;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class BatchFragment extends Fragment {
     private View root;
     private RecyclerView batchView;
     private DatabaseReference batchRef;
+    private ProgressDialog pd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,9 +44,14 @@ public class BatchFragment extends Fragment {
         //Nav View
         NavigationView navigationView = main.findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_batch);
-
+        pd = new ProgressDialog(main);
+        pd.setTitle("Please Wait");
+        pd.setCancelable(false);
+        pd.setMessage("Loading Contents ...");
+        pd.show();
         batchView=root.findViewById(R.id.batch_list);
         batchRef= FirebaseDatabase.getInstance().getReference().child("upcoming_batches");
+        batchRef.keepSynced(true);
         FirebaseRecyclerAdapter<UpcomingBatches,BatchViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<UpcomingBatches, BatchViewHolder>(
                 UpcomingBatches.class,
                 R.layout.upcoming_batches_row,
@@ -53,6 +60,7 @@ public class BatchFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(BatchViewHolder viewHolder, UpcomingBatches model, int position) {
+                pd.dismiss();
                 viewHolder.setAllText(model.getName(),model.getDate(),model.getTiming());
             }
         };

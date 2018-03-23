@@ -45,7 +45,7 @@ public class CoursesFragment extends Fragment {
     private View root;
     private RecyclerView courseList;
     private DatabaseReference courseRef;
-
+    private ProgressDialog pd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +57,12 @@ public class CoursesFragment extends Fragment {
         navigationView.setCheckedItem(R.id.nav_courses);
         courseList=root.findViewById(R.id.course_list);
         courseRef= FirebaseDatabase.getInstance().getReference().child("courses");
+        pd = new ProgressDialog(main);
+        pd.setTitle("Please Wait");
+        pd.setCancelable(false);
+        pd.setMessage("Loading Contents ...");
+        pd.show();
+        courseRef.keepSynced(true);
         FirebaseRecyclerAdapter<Course,CourseViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Course, CourseViewHolder>(
                 Course.class,
                 R.layout.course_row,
@@ -65,38 +71,43 @@ public class CoursesFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(CourseViewHolder viewHolder, final Course model, int position) {
+                pd.dismiss();
                 viewHolder.setAllData(getContext(),model.getImage_url(),model.getName(),model.getDuration(),model.getPrice());
                 viewHolder.syllabus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String url=model.getSyllabus();
-                        final ProgressDialog dialog=new ProgressDialog(main);
-                        StorageReference downloadStore= FirebaseStorage.getInstance().getReferenceFromUrl(url);
-                        File root = getExternalStorageDirectory();
-                        File dir=new File(root.getAbsolutePath(),"/JT");
-                        dir.mkdirs();
-                        final File file = new File(dir,model.getName()+".pdf");
-                        downloadStore.getFile(file).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                dialog.setTitle("Downloading..");
-                                dialog.setMessage(taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount()*100+"%");
-                                dialog.show();
-                            }
-                        }).addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(main, "Successfully downloaded to "+file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                        if(!url.equals("none")) {
+                            final ProgressDialog dialog = new ProgressDialog(main);
+                            StorageReference downloadStore = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+                            File root = getExternalStorageDirectory();
+                            File dir = new File(root.getAbsolutePath(), "/JT");
+                            dir.mkdirs();
+                            final File file = new File(dir, model.getName() + ".pdf");
+                            downloadStore.getFile(file).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                    dialog.setTitle("Downloading..");
+                                    dialog.setMessage(taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount() * 100 + "%");
+                                    dialog.show();
                                 }
-                                dialog.dismiss();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(main, e.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        });
+                            }).addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(main, "Successfully downloaded to " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                                    }
+                                    dialog.dismiss();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(main, e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }else{
+                            Toast.makeText(main, "Sorry ! The Syllabus is being updated.Try again Later..", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });

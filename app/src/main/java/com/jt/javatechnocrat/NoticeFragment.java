@@ -1,5 +1,6 @@
 package com.jt.javatechnocrat;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ public class NoticeFragment extends Fragment {
     private View root;
     private RecyclerView noticeList;
     private DatabaseReference noticeRef;
+    ProgressDialog pd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +35,12 @@ public class NoticeFragment extends Fragment {
 
         noticeRef= FirebaseDatabase.getInstance().getReference().child("notice");
         noticeList=root.findViewById(R.id.notice_list);
+        pd = new ProgressDialog(main);
+        pd.setTitle("Please Wait");
+        pd.setCancelable(false);
+        pd.setMessage("Loading Contents ...");
+        pd.show();
+        noticeRef.keepSynced(true);
         FirebaseRecyclerAdapter<Notice,NoticeViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Notice, NoticeViewHolder>(
                 Notice.class,
                 R.layout.notice_row,
@@ -41,6 +49,7 @@ public class NoticeFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(NoticeViewHolder viewHolder, Notice model, int position) {
+                pd.dismiss();
                 viewHolder.setAllText(model.getTitle(),model.getDate(),model.getDescription());
             }
         };

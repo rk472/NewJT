@@ -1,6 +1,7 @@
 package com.jt.javatechnocrat;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -32,6 +33,7 @@ public class TeamFragment extends Fragment {
     private View root;
     private RecyclerView teamList;
     private DatabaseReference teamRef;
+    private ProgressDialog pd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +46,12 @@ public class TeamFragment extends Fragment {
         navigationView.setCheckedItem(R.id.nav_team);
         teamList=root.findViewById(R.id.team_list);
         teamRef= FirebaseDatabase.getInstance().getReference().child("faculty");
+        pd = new ProgressDialog(main);
+        pd.setTitle("Please Wait");
+        pd.setCancelable(false);
+        pd.setMessage("Loading Contents ...");
+        pd.show();
+        teamRef.keepSynced(true);
         FirebaseRecyclerAdapter<Team,TeamViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Team, TeamViewHolder>(
                 Team.class,
                 R.layout.faculty_row,
@@ -52,6 +60,7 @@ public class TeamFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(TeamViewHolder viewHolder, final Team model, int position) {
+                pd.dismiss();
                 viewHolder.setAllData(model.getName(),model.getSubject(),model.getImage_url(),getContext());
                 viewHolder.know.setOnClickListener(new View.OnClickListener() {
                     @Override
