@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -25,6 +26,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -53,13 +55,20 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         mDemoSlider = root.findViewById(R.id.slider);
         //Image set
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal",R.drawable.hannibal);
-        file_maps.put("BBT",R.drawable.bigbang);
-        file_maps.put("House of Cards",R.drawable.house);
-        file_maps.put("GOT", R.drawable.game_of_thrones);
+        file_maps.put("Project Group", R.drawable.projects);
+        file_maps.put("Summer Training", R.drawable.summer);
+        file_maps.put("Seminars in renowned Institutions", R.drawable.seminar);
+        file_maps.put("Never Off Duty", R.drawable.neveroff);
+        file_maps.put("Our Building",R.drawable.building);
+        file_maps.put("Our Office",R.drawable.office);
+        file_maps.put("Founder of Java Technocrat, Rashmi Sir",R.drawable.founder);
+        file_maps.put("Best Entrepreneur Award", R.drawable.award);
+        file_maps.put("3 Golden Books By Rashmi Sir", R.drawable.books);
+
         //Image Slider
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(main);
+
             // initialize a SliderLayout
             textSliderView
                     .description(name)
