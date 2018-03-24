@@ -112,7 +112,7 @@ public class ProjectFragment extends Fragment {
             technologyText=itemView.findViewById(R.id.project_technology);
         }
         public void setAllData(String name,String tech){
-            nameText.setText("Project Name : "+name);
+            nameText.setText("Project : "+name);
             technologyText.setText("Technology Used : "+tech);
         }
     }
