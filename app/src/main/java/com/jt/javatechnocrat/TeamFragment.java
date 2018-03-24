@@ -25,6 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class TeamFragment extends Fragment {
 
@@ -67,7 +69,7 @@ public class TeamFragment extends Fragment {
                     public void onClick(View view) {
                         final Dialog fullscreenDialog = new Dialog(getContext(), R.style.DialogFullscreen);
                         fullscreenDialog.setContentView(R.layout.activity_team);
-                        final ImageView logo = fullscreenDialog.findViewById(R.id.team_logo);
+                        final CircleImageView logo = fullscreenDialog.findViewById(R.id.team_logo);
                         TextView name = fullscreenDialog.findViewById(R.id.team_name);
                         TextView sub = fullscreenDialog.findViewById(R.id.team_sub);
                         TextView desc = fullscreenDialog.findViewById(R.id.team_des);
@@ -78,7 +80,6 @@ public class TeamFragment extends Fragment {
                                 .into(logo, new Callback() {
                                     @Override
                                     public void onSuccess() {
-
                                     }
                                     @Override
                                     public void onError() {
@@ -107,7 +108,7 @@ public class TeamFragment extends Fragment {
     }
     public static class TeamViewHolder extends RecyclerView.ViewHolder{
         View mView;
-        ImageView img;
+        CircleImageView img;
         TextView nameText,subjectText,know;
         public TeamViewHolder(View itemView) {
             super(itemView);
