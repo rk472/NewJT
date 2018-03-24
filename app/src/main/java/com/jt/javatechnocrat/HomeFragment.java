@@ -44,9 +44,9 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         main=(AppCompatActivity)getActivity();
         main.getSupportActionBar().setTitle("JT Home");
         root=inflater.inflate(R.layout.fragment_home, container, false);
-        MobileAds.initialize(main, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(main,"ca-app-pub-2443042198368870~6731358020");
         mAdView = root.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("5CF20869CF26A56584CC4BEE4CF0E5A9").build();
         mAdView.loadAd(adRequest);
         //Nav View
         NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);

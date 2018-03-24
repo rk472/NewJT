@@ -134,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:weightSum="3"
                     android:layout_weight="1">
                     <LinearLayout
@@ -229,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:weightSum="3"
                     android:layout_weight="1">
                     <LinearLayout
@@ -333,7 +333,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+                    ads:adUnitId="ca-app-pub-2443042198368870/1095887966"></com.google.android.gms.ads.AdView>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
